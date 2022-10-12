@@ -11,13 +11,16 @@ public class UIManager : MonoBehaviour
     private Image innerBar;
     private float health;
     private GameObject canvas;
+    private GameObject LoadingPanel;
+    private RectTransform LoadingRec;
     
     Quaternion originalRoation;
     // Start is called before the first frame update
     void Start()
     {
-
-        
+        LoadingPanel = this.gameObject.transform.GetChild(0).GetChild(0).gameObject;
+        LoadingRec = LoadingPanel.GetComponent<RectTransform>();
+        LoadingRec.sizeDelta = new Vector2(Screen.width, Screen.height); 
     }
 
    
@@ -44,11 +47,14 @@ public class UIManager : MonoBehaviour
         
 
     }
-
+    public void ShowLoadingScreen()
+    {
+        LoadingRec.anchoredPosition = new Vector2(0.0f, 0.0f);
+    }
     public void LoadFirstLevel()
     {
         DontDestroyOnLoad(gameObject);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadSceneAsync(1);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
