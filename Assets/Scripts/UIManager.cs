@@ -22,7 +22,10 @@ public class UIManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         SceneManager.LoadScene(1);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
+ 
 
     public void QuitGame()
     {
@@ -33,7 +36,9 @@ public class UIManager : MonoBehaviour
     {
         if(scene.buildIndex == 1)
         {
-            
+            GameObject[] quitButton = GameObject.FindGameObjectsWithTag("QuitButton");
+            Button btn = quitButton[0].GetComponent<Button>();
+            btn.onClick.AddListener(QuitGame);
         }
     }
 }
