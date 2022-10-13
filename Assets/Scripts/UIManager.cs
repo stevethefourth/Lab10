@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     private GameObject canvas;
     private GameObject LoadingPanel;
     private RectTransform LoadingRec;
+    public Tweener tweener;
     
     Quaternion originalRoation;
     // Start is called before the first frame update
@@ -50,6 +51,10 @@ public class UIManager : MonoBehaviour
     public void ShowLoadingScreen()
     {
         LoadingRec.anchoredPosition = new Vector2(0.0f, 0.0f);
+        if (!tweener.TweenExists(transform))
+        {
+           
+        }
     }
     public void LoadFirstLevel()
     {
