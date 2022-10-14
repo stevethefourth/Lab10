@@ -44,16 +44,19 @@ public class UIManager : MonoBehaviour
             canvas = innerBar.gameObject.transform.parent.gameObject;
             canvas.transform.rotation = Camera.main.transform.rotation;
         }
-        
-        
+
+        ShowLoadingScreen();
 
     }
     public void ShowLoadingScreen()
     {
-        LoadingRec.anchoredPosition = new Vector2(0.0f, 0.0f);
-        if (!tweener.TweenExists(transform))
+        
+        Debug.Log(LoadingRec.position);
+        Debug.Log(LoadingRec.anchoredPosition);
+        if (!tweener.TweenExists(LoadingRec))
         {
-           
+            tweener.AddTween(LoadingRec, LoadingRec.position, new Vector3(0.0f,0.0f,0.0f), 10.0f);
+            LoadingRec.anchoredPosition = new Vector2(0.0f, 0.0f);
         }
     }
     public void LoadFirstLevel()
