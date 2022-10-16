@@ -7,7 +7,7 @@ public class Tweener : MonoBehaviour
     //private Tween activeTween;
     private List<Tween> activeTweens;
 
-    void Start()
+    void Awake()
     {
         activeTweens = new List<Tween>();
     }
